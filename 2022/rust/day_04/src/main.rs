@@ -37,6 +37,38 @@ fn part_1(file_path: &str) -> u32 {
         .sum::<u32>()
 }
 
+fn range_overlaps_range(a: &RangeInclusive<u32>, b: &RangeInclusive<u32>) -> bool {
+    a.clone()
+    .map(move |x| b.contains(&x))
+    .collect::<Vec<bool>>()
+    .contains(&true)
+}
+
+fn part_2(file_path: &str) -> u32 {
+    read_to_string(file_path)
+        .unwrap()
+        .lines()
+        .map(|x| {
+            let pair = x
+                .split(",")
+                .map(|x| {
+                    let x = x
+                        .split("-")
+                        .map(|x| String::from(x).parse::<u32>().unwrap())
+                        .collect::<Vec<u32>>();
+                    x[0]..=x[1]
+                })
+                .collect::<Vec<RangeInclusive<u32>>>();
+            if range_overlaps_range(&pair[0], &pair[1]){
+                1
+            } else {
+                0
+            }
+        })
+        .sum::<u32>()
+}
+
 fn main() {
     println!("Part 1: {}", part_1("./input.txt"));
+    println!("Part 1: {}", part_1("./example.txt"));
 }
