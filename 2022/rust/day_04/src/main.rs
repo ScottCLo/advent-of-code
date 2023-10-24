@@ -1,40 +1,32 @@
-use std::{fs::read_to_string, vec, io::BufRead};
+use std::{fs::read_to_string, ops::RangeInclusive};
 
-struct Task {
-    start: u32,
-    end: u32,
-}
-
-impl Task {
-    fn contrains_range(task: Task) -> bool{
+fn range_contains_range(a: &RangeInclusive<u32>, b: &RangeInclusive<u32>) -> bool{
+    if a.clone().map(move |x| b.contains(&x)).collect::<Vec<bool>>().contains(&false) {
+        false
+    } else {
         true
     }
 }
 
-fn part_1() {
-    println!("WORK!");
-    let input = read_to_string("./example.txt")
-        .unwrap();
-    let a = input
+fn part_1(file_path:&str) -> u32{
+    read_to_string(file_path)
+        .unwrap()
         .lines()
         .map(|x| {
             let pair = x.split(",").map(|x|{
                 let x = x.split("-").map(|x| String::from(x).parse::<u32>().unwrap()).collect::<Vec<u32>>();
-                Task{start: x[0], end: x[1]}
+                x[0]..=x[1]
             })
-            .collect::<Vec<Task>>();
-            let task_range1 = (pair[0].start..pair[0].end);
-            let task_range2 = (pair[1].start..pair[1].end);
-            if task_range1.len() > task_range2.len() {
-
+            .collect::<Vec<RangeInclusive<u32>>>();
+            if range_contains_range(&pair[0], &pair[1]) || range_contains_range(&pair[1], &pair[0]){
+                1
+            } else {
+                0
             }
-        });
-        
-    
-    println!("{:?}", a);
+        }).sum::<u32>()
 }
 
 fn main() {
-    //part_1();
+    println!("Part 1: {}", part_1("./input.txt"));
 
 }
