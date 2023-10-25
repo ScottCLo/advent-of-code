@@ -68,5 +68,5 @@ fn part_2(file_path: &str) -> u32 {
 
 fn main() {
     println!("Part 1: {}", part_1("./input.txt"));
-    println!("Part 1: {}", part_2("./input.txt"));
+    println!("Part 2: {}", part_2("./input.txt"));
 }

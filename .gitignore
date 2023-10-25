@@ -1,2 +1,4 @@
-# ignore all target folder
+# ignore all .lock files
+*.lock
+# ignore all target folders
 target/
