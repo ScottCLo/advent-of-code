@@ -4,8 +4,7 @@ fn range_contains_range(a: &RangeInclusive<u32>, b: &RangeInclusive<u32>) -> boo
     if a.clone()
         .map(move |x| b.contains(&x))
         .collect::<Vec<bool>>()
-        .contains(&false)
-    {
+        .contains(&false){
         false
     } else {
         true
@@ -27,8 +26,7 @@ fn part_1(file_path: &str) -> u32 {
                     x[0]..=x[1]
                 })
                 .collect::<Vec<RangeInclusive<u32>>>();
-            if range_contains_range(&pair[0], &pair[1]) || range_contains_range(&pair[1], &pair[0])
-            {
+            if range_contains_range(&pair[0], &pair[1]) || range_contains_range(&pair[1], &pair[0]){
                 1
             } else {
                 0
@@ -70,5 +68,5 @@ fn part_2(file_path: &str) -> u32 {
 
 fn main() {
     println!("Part 1: {}", part_1("./input.txt"));
-    println!("Part 1: {}", part_1("./example.txt"));
+    println!("Part 1: {}", part_2("./input.txt"));
 }
