@@ -1,4 +1,5 @@
 #!/bin/bash
-name=${PWD##*/}
+name=out.temp
 g++ src/*.cpp -o $name
 ./$name
+rm -f $name
