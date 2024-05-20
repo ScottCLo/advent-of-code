@@ -2,8 +2,10 @@ package main
 
 import (
 	"bufio"
+	"fmt"
 	"log"
 	"os"
+	"strings"
 )
 
 func part1() int{
@@ -12,10 +14,13 @@ func part1() int{
 		log.Fatal(err)
 	}
 	defer file.Close()
-
 	scanner := bufio.NewScanner(file)
-	for scanner.Scan() {
+	for i := 1; scanner.Scan(); i++ {
+		game := strings.Split(strings.Split(scanner.Text(), ":")[1], ";")
+		for ii, set := range game {
+			cubes := strings.Split(set, ",")
+			fmt.Printf("Game %d, Set %d: %s\n", i, ii, cubes)
+		}
 	}
-
 	return 0
 }
