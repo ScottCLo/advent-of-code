@@ -31,9 +31,9 @@ int part1(std::ifstream& input){
 				string color = m[0];
 				regex_search(marbles, m, std::regex("[0-9]+"));
 				int count = stoi(m[0]);
-				if(color == "red" && count > RED ||
-				   color == "green" && count > GREEN || 
-			           color == "blue" && count > BLUE){
+				if(color == "red" && count > RED 
+				|| color == "green" && count > GREEN 
+				|| color == "blue" && count > BLUE){
 					valid = false;
 					break;
 				}
