@@ -26,7 +26,7 @@ std::vector<std::vector<char>> read_file_to_buffer(std::ifstream& input){
 	return buffer;
 }
 
-
+//too many nested loops.
 int part1(std::ifstream& input){
 	using namespace std;
 
