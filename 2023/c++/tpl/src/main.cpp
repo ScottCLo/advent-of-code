@@ -5,10 +5,12 @@
 #include <fstream>
 
 int main(){
-	std::ifstream input;
+	using namespace std;
+
+	ifstream input;
 	input.open("input");
 	if(!input.is_open()){
-		std::printf("Unable to open input file.\n");
+		printf("Unable to open input file.\n");
 		return 0;
 	}
 
