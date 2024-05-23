@@ -17,7 +17,7 @@ int part1(std::ifstream& input){
 	while(getline(input, line)){
 		smatch match;
 		vector<string> winning_numbers, your_numbers;
-		int matches = 0, score = 0;
+		int matches = 0;
 
 		regex_search(line, match, win_num_rx);
 		winning_numbers = collect_matches( match[1], number_rx);
