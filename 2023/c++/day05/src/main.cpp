@@ -8,7 +8,7 @@ int main(){
 	using namespace std;
 
 	ifstream input;
-	input.open("input");
+	input.open("test");
 	if(!input.is_open()){
 		printf("Unable to open input file.\n");
 		return 0;
